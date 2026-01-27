@@ -1,0 +1,194 @@
+/*================================================
+Global Loader - Spinner Style (Using whirly-loader class)
+=================================================*/
+
+/* Main loader container */
+div#global-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    position: fixed;
+    z-index: 999999;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Spinner using the whirly-loader class name */
+div#global-loader .whirly-loader {
+    /* Reset whirly styles */
+    animation: none;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+
+    /* Spinner container styles */
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    overflow: visible;
+    text-indent: 0; /* Reset text indent */
+}
+
+/* Create spinner bars */
+div#global-loader .whirly-loader div {
+    transform-origin: 40px 40px;
+    animation: spinner-fade 1.2s linear infinite;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+div#global-loader .whirly-loader div::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 35px;
+    width: 5px;
+    height: 20px;
+    border-radius: 20%;
+    background: #18355b;
+}
+
+/* Rotation and delay for each bar */
+div#global-loader .whirly-loader div:nth-child(1) {
+    transform: rotate(0deg);
+    animation-delay: -1.1s;
+}
+div#global-loader .whirly-loader div:nth-child(2) {
+    transform: rotate(30deg);
+    animation-delay: -1s;
+}
+div#global-loader .whirly-loader div:nth-child(3) {
+    transform: rotate(60deg);
+    animation-delay: -0.9s;
+}
+div#global-loader .whirly-loader div:nth-child(4) {
+    transform: rotate(90deg);
+    animation-delay: -0.8s;
+}
+div#global-loader .whirly-loader div:nth-child(5) {
+    transform: rotate(120deg);
+    animation-delay: -0.7s;
+}
+div#global-loader .whirly-loader div:nth-child(6) {
+    transform: rotate(150deg);
+    animation-delay: -0.6s;
+}
+div#global-loader .whirly-loader div:nth-child(7) {
+    transform: rotate(180deg);
+    animation-delay: -0.5s;
+}
+div#global-loader .whirly-loader div:nth-child(8) {
+    transform: rotate(210deg);
+    animation-delay: -0.4s;
+}
+div#global-loader .whirly-loader div:nth-child(9) {
+    transform: rotate(240deg);
+    animation-delay: -0.3s;
+}
+div#global-loader .whirly-loader div:nth-child(10) {
+    transform: rotate(270deg);
+    animation-delay: -0.2s;
+}
+div#global-loader .whirly-loader div:nth-child(11) {
+    transform: rotate(300deg);
+    animation-delay: -0.1s;
+}
+div#global-loader .whirly-loader div:nth-child(12) {
+    transform: rotate(330deg);
+    animation-delay: 0s;
+}
+
+/* Spinner fade animation */
+@keyframes spinner-fade {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Remove old whirly animation (not needed anymore) */
+@-webkit-keyframes whirly-loader {
+    /* Disabled */
+}
+@keyframes whirly-loader {
+    /* Disabled */
+}
+
+.header-logo {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 180px;
+}
+
+.header-default .menu-area {
+    gap: 15px;
+}
+
+.header-default .header-button {
+    gap: 15px;
+}
+
+@media (max-width: 1399px) {
+    .hero-style1 {
+        --space: 145px;
+        padding-bottom: 160px;
+    }
+}
+
+.hero-style1 .sub-title {
+    color: var(--white-color) !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .cta-btn {
+        width: 100%;
+    }
+}
+
+
+
+/* MISSION AND VISION  */
+.feature-card .box-text {
+    margin-bottom: 0px;
+}
+
+.service-grid-wrapper{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  justify-content: center;
+}
+
+@media (max-width: 991px){
+  .service-grid-wrapper{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575px){
+  .service-grid-wrapper{
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Target focus  */
+
+.donation-card {
+    padding: 20px;
+}
+.donation-card .box-title {
+    margin-bottom: 10px;
+}
+
+.donation-card p{
+    line-height: 1.4;
+}
+
+
