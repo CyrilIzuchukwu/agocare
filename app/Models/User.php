@@ -45,4 +45,18 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    // In User model
+    public function profileImageUrl()
+    {
+        return $this->profile && $this->profile->profile_image
+            ? asset('storage/' . $this->profile->profile_image)
+            : asset('dashboard_assets/img/user-icon.jpg');
+    }
 }

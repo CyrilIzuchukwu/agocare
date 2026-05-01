@@ -277,7 +277,8 @@
         var sliderDefault = {
             slidesPerView: 1,
             spaceBetween: settings.spaceBetween || 24,
-            loop: settings.loop !== false,
+            loop: settings.loop === true,
+            loopAdditionalSlides: 4,
             speed: settings.speed || 1000,
             autoplay: settings.autoplay || { delay: 6000, disableOnInteraction: false },
             navigation: {
@@ -358,7 +359,7 @@
             if (swiper) {
                 if ($(this).data('slider-prev')) {
                     swiper.slidePrev();
-                } else {navigator,
+                } else {
                     swiper.slideNext();
                 }
             }
@@ -720,12 +721,14 @@
     }
 
     /*----------- 16. Progress Bar Animation ----------*/
-    $('.progress-bar').waypoint(function() {
-        $('.progress-bar').css({
-        animation: "animate-positive 1.8s",
-        opacity: "1"
-        });
-    }, { offset: '100%' });
+    if (typeof $.fn.waypoint === 'function') {
+        $('.progress-bar').waypoint(function() {
+            $('.progress-bar').css({
+            animation: "animate-positive 1.8s",
+            opacity: "1"
+            });
+        }, { offset: '100%' });
+    }
 
     /*----------- 17. Countdown ----------*/
     $.fn.countdown = function () {

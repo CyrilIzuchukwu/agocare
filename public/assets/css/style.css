@@ -1,7 +1,7 @@
 @charset "UTF-8";
 :root {
     --theme-color: #18355b;
-    --theme-dark: #122f2a;
+    --theme-dark: #0e1f3a;
     --theme-color2: #c62024;
     --theme-color3: #ff5528;
     --title-color: #1f1f1f;
@@ -12,7 +12,8 @@
     --black-color: #000000;
     --black-color2: #141414;
     --black-color3: #051311;
-    --black-color4: #00110e;
+    --black-color3: #0e1f3a;
+    /* --black-color4: #0E1F3A; */
     /* --black-color4: #0b1a2e; */
     --black-color4: #07101c;
     --gray-color: #fdf8ea;
@@ -37,6 +38,7 @@
     --main-container: 1290px;
     --container-gutters: 24px;
     --section-space: 100px;
+    --section-space-80: 80px;
     --section-space-mobile: 80px;
     --section-title-space: 60px;
     --ripple-ani-duration: 5s;
@@ -54,7 +56,6 @@ body {
     font-size: 16px;
     font-weight: 400;
     color: var(--body-color);
-    line-height: 26px;
     overflow-x: hidden;
     background: var(--th-body-background);
     -webkit-font-smoothing: antialiased;
@@ -3115,8 +3116,8 @@ textarea.is-invalid {
 
 .scroll-top {
     position: fixed;
-    right: 30px;
-    bottom: 55px;
+    right: 25px;
+    bottom: 35px;
     height: 50px;
     width: 50px;
     cursor: pointer;
@@ -3271,7 +3272,7 @@ textarea.is-invalid {
 }
 
 .title-area {
-    margin-bottom: calc(var(--section-title-space) - 12px);
+    /* margin-bottom: calc(var(--section-title-space) - 12px); */
     position: relative;
     z-index: 2;
 }
@@ -6688,6 +6689,9 @@ ol.wp-block-rss {
 .main-menu > ul > li > a:hover {
     color: var(--theme-color);
 }
+.main-menu > ul > li.active > a {
+    color: var(--theme-color);
+}
 .main-menu ul {
     margin: 0;
     padding: 0;
@@ -6800,7 +6804,7 @@ ol.wp-block-rss {
     text-transform: capitalize;
 }
 .main-menu ul.sub-menu li a:before {
-    content: "\f4b9";
+    content: "\f061";
     position: absolute;
     top: 6px;
     left: 10px;
@@ -8444,6 +8448,7 @@ ol.wp-block-rss {
     line-height: 1.1;
     font-weight: 800;
     color: var(--white-color);
+    font-size: 35px;
 }
 
 @media (min-width: 1300px) {
@@ -8452,13 +8457,13 @@ ol.wp-block-rss {
     }
 }
 .breadcumb-wrapper {
-    background-color: var(--title-color);
+    background-color: var(--black-color3) !important;
     overflow: hidden;
     position: relative;
     z-index: 1;
 }
 .breadcumb-wrapper .breadcumb-content {
-    --space: 165px;
+    --space: 60px;
     padding: calc(var(--space) + 30px) 0 var(--space);
     position: relative;
     z-index: 1;
@@ -13251,8 +13256,8 @@ span.select2-selection.select2-selection--single:focus {
 .img-box2 .img1 img {
     border-radius: 30px;
     width: 100%;
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
+    /* -webkit-filter: grayscale(1);
+    filter: grayscale(1); */
     -webkit-transition: 0.4s;
     transition: 0.4s;
 }
@@ -13272,8 +13277,8 @@ span.select2-selection.select2-selection--single:focus {
 .img-box2 .img2 img {
     border-radius: 30px;
     width: 100%;
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
+    /* -webkit-filter: grayscale(1);
+    filter: grayscale(1); */
     -webkit-transition: 0.4s;
     transition: 0.4s;
 }
@@ -13291,8 +13296,8 @@ span.select2-selection.select2-selection--single:focus {
 }
 .img-box2 .img3 img {
     width: 100%;
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
+    /* -webkit-filter: grayscale(1);
+    filter: grayscale(1); */
     -webkit-transition: 0.4s;
     transition: 0.4s;
 }
@@ -14046,7 +14051,7 @@ span.select2-selection.select2-selection--single:focus {
 }
 .team-card .team-card-content {
     position: relative;
-    padding: 142px 30px 30px;
+    padding: 132px 30px 30px;
     margin-top: -96px;
 }
 .team-card .team-card-content:after {
@@ -15159,8 +15164,8 @@ span.select2-selection.select2-selection--single:focus {
     flex: none;
 }
 .testi-card3 .testi-card_profile .box-thumb img {
-    border-radius: 100px;
-    width: 140px;
+    border-radius: 100%;
+    width: 100px;
     height: 100px;
     -o-object-fit: cover;
     object-fit: cover;
@@ -21056,7 +21061,7 @@ span.select2-selection.select2-selection--single:focus {
 
 /*------------------- 4.00. Campaign -------------------*/
 .campaign-area-1 {
-    padding-bottom: calc(var(--section-space) + 80px);
+    padding-bottom: calc(var(--section-space) + 0px);
 }
 
 .campaign-bg-shape1-3 {
