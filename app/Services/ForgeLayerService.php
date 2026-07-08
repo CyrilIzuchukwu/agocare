@@ -48,8 +48,20 @@ class ForgeLayerService
 
     public function createAddress(string $chain, ?string $userRef = null, ?string $label = null): array
     {
+        // Live endpoint uses full chain names, unlike sandbox's short codes.
+        // Keep the rest of the app (validation, DB, forms) using short codes
+        // consistently, and only translate right here at the live API boundary.
+        $liveChainMap = [
+            'btc' => 'bitcoin',
+            'eth' => 'ethereum',
+            'bsc' => 'bsc',
+            'tron' => 'tron',
+        ];
+
+        $liveChain = $liveChainMap[$chain] ?? $chain;
+
         $response = $this->client()->post('/v1/addresses', array_filter([
-            'chain' => $chain,
+            'chain' => $liveChain,
             'userRef' => $userRef,
             'label' => $label,
         ]));
