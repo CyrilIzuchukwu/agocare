@@ -20,7 +20,13 @@ return Application::configure(basePath: dirname(__DIR__))
 
     // Apply maintenance check to all web requests
     $middleware->appendToGroup('web', CheckMaintenanceMode::class);
-  })
+
+    // ForgeLayer webhooks come from their server, not a browser session,
+    // so they can't send a CSRF token — exempt this route from CSRF checks.
+    $middleware->validateCsrfTokens(except: [
+        'webhooks/forgelayer',
+    ]);
+})
   ->withExceptions(function (Exceptions $exceptions): void {
     //
   })->create();
