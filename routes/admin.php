@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SeoSettingsController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\TeamMemberController;
+use App\Http\Controllers\Admin\VolunteerApplicationController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')
@@ -17,6 +18,12 @@ Route::prefix('admin')
     Route::resource('team', TeamMemberController::class)
       ->except('show')
       ->parameters(['team' => 'teamMember']);
+
+    Route::get('volunteer-applications', [VolunteerApplicationController::class, 'index'])->name('volunteer-applications.index');
+    Route::get('volunteer-applications/{volunteerApplication}', [VolunteerApplicationController::class, 'show'])->name('volunteer-applications.show');
+    Route::patch('volunteer-applications/{volunteerApplication}', [VolunteerApplicationController::class, 'update'])->name('volunteer-applications.update');
+    Route::get('volunteer-applications/{volunteerApplication}/cv', [VolunteerApplicationController::class, 'downloadCv'])->name('volunteer-applications.cv');
+    Route::post('volunteer-applications/{volunteerApplication}/add-to-team', [VolunteerApplicationController::class, 'addToTeam'])->name('volunteer-applications.add-to-team');
 
 
     Route::prefix('profile')

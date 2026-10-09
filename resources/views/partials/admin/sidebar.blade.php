@@ -45,6 +45,13 @@
                 </a>
               </li>
 
+              <li class="mb-1 {{ request()->routeIs('admin.volunteer-applications.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.volunteer-applications.index') }}">
+                  <i class="ti ti-clipboard-text fs-16 me-2"></i>
+                  <span>Volunteer Applications</span>
+                </a>
+              </li>
+
 
               <li class="mb-1 ">
                 <a href="" class="">
