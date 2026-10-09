@@ -103,12 +103,7 @@ class DonationController extends Controller
 
         // Step 2: call ForgeLayer to get a deposit address.
         try {
-            // $result = $this->forgeLayer->createAddress(
-            //     chain: $validated['chain'],
-            //     userRef: (string) $donation->id,
-            //     label: 'donation-' . $donation->id
-            // );
-
+         
             $result = config('forgelayer.live')
                 ? $this->forgeLayer->createAddress(chain: $validated['chain'], userRef: (string) $donation->id, label: 'donation-' . $donation->id)
                 : $this->forgeLayer->createSandboxAddress(chain: $validated['chain'], userRef: (string) $donation->id, label: 'donation-' . $donation->id);

@@ -3,17 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\TeamMember;
 
 class PageController extends Controller
 {
   public function home()
   {
-    return view('welcome');
+    $leadership = TeamMember::published()->where('group', 'leadership')
+      ->where('show_on_homepage', true)->ordered()->first();
+    $homepageTeam = TeamMember::published()
+      ->where('show_on_homepage', true)
+      ->whereIn('group', ['board', 'executive'])
+      ->ordered()->take(8)->get();
+    $volunteers = TeamMember::published()->where('group', 'volunteer')
+      ->where('show_on_homepage', true)->ordered()->take(12)->get();
+
+    return view('welcome', compact('leadership', 'homepageTeam', 'volunteers'));
   }
 
   public function about()
   {
-    return view('pages.about');
+    $leadership = TeamMember::published()->where('group', 'leadership')->ordered()->first();
+    $board = TeamMember::published()->where('group', 'board')->ordered()->get();
+    $executives = TeamMember::published()->where('group', 'executive')->ordered()->get();
+
+    return view('pages.about', compact('leadership', 'board', 'executives'));
   }
 
 

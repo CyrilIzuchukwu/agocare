@@ -155,7 +155,7 @@
 {{-- ===== OUR TEAM ===== --}}
 <section class="space-bottom team-area-1" id="our-team">
   <div class="shape-mockup team-bg-shape1-1 spin d-xxl-block d-none" data-top="0%" data-right="3%">
-    <img src="{{ asset('assets/img/shape/hand-group-shape1.png') }}" alt="img">
+    <img src="{{ asset('assets/img/shape/hand-group-shape1.png') }}" alt="">
   </div>
   <div class="container">
     <div class="title-area text-center mb-50">
@@ -163,84 +163,102 @@
       <h2 class="sec-title">Meet Our Team</h2>
     </div>
 
-    {{-- Founder Highlight --}}
-    <div class="row gx-0 justify-content-center mb-60 founder-highlight">
-      <div class="col-lg-5">
-        <div class="swiper th-slider testi-thumb-slider1"
-          data-slider-options='{"effect":"fade","loop":false}'>
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div class="testi-box-img">
-                <img class="testi-img" src="{{ asset('assets/img/user/user-icon.jpg') }}"
-                  alt="Mrs. Abugu Gloria">
-                <div class="testi-card_review">
-                  <i class="fas fa-star"></i> Founder
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    @if($leadership)
+    <div class="ago-about-founder mb-60">
+      <div class="ago-about-founder__photo">
+        <img src="{{ $leadership->image ? Storage::url($leadership->image) : asset('assets/img/user/user-icon.jpg') }}" alt="{{ $leadership->name }}">
       </div>
-      <div class="col-lg-7">
-        <div class="testi-slider1">
-          <div class="testi-card">
-            <p class="box-text">"I founded AGO Cares Foundation with one clear purpose — to ensure that
-              persons
-              with disabilities, people living with albinism, and vulnerable children are never left
-              behind.
-              Too many face not just physical challenges, but the crushing weight of stigma and exclusion.
-              Through healthcare, education, and advocacy, we are building a Nigeria where no one is
-              defined
-              by their condition but celebrated for their potential."</p>
-            <h3 class="box-title">Mrs. Abugu Gloria Onyedikachi</h3>
-            <p class="box-desig">Founder &amp; President, AGO Cares Foundation</p>
-            <div class="quote-icon" data-mask-src="{{ asset('assets/img/icon/quote2.svg') }}"></div>
-          </div>
+      <div class="ago-about-founder__message">
+        <div class="ago-about-founder__heading">
+          <span class="ago-about-founder__kicker">A word from our founder</span>
+          <h3>Leading with empathy, dignity and purpose.</h3>
+        </div>
+        @if($leadership->bio)<p class="ago-about-founder__bio">“{{ $leadership->bio }}”</p>@endif
+        <div class="ago-about-founder__identity">
+          <h4>{{ $leadership->name }}</h4>
+          <p>{{ $leadership->position }}</p>
         </div>
       </div>
     </div>
+    @endif
 
-    {{-- Board of Directors --}}
+    @if($board->isNotEmpty())
+    @php
+      $boardCount = $board->count();
+      $boardSliderOptions = [
+        'loop' => $boardCount > 4,
+        'centerInsufficientSlides' => true,
+        'speed' => 850,
+        'autoplay' => ['delay' => 3500, 'disableOnInteraction' => false, 'pauseOnMouseEnter' => true],
+        'breakpoints' => [
+          0 => ['slidesPerView' => 1, 'spaceBetween' => 16],
+          576 => ['slidesPerView' => 2],
+          992 => ['slidesPerView' => 3],
+          1200 => ['slidesPerView' => 4],
+        ],
+      ];
+    @endphp
     <div class="title-area text-center mb-40">
       <span class="sub-title">Governance</span>
       <h2 class="sec-title">Board of Directors</h2>
     </div>
-
-    <div class="slider-area directors">
-      <div class="swiper th-slider has-shadow" id="teamSlider3"
-        data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"2"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"3"},"1200":{"slidesPerView":"4"}}}'>
+    <div class="slider-area directors about-team-slider {{ $boardCount === 1 ? 'is-single' : '' }}">
+      <div class="swiper th-slider has-shadow" id="teamSlider3" data-slider-options='@json($boardSliderOptions)'>
         <div class="swiper-wrapper">
-
-          @php
-          $board = [
-          ['name' => 'Mrs. Abugu Gloria Onyedikachi', 'role' => 'Chairman'],
-          ['name' => 'Mr. Patrick Chukwuka Chinadum', 'role' => 'Board Member'],
-          ['name' => 'Nweke Ukamaka Irene', 'role' => 'Board Member'],
-          ['name' => 'Fabian Onyekachi', 'role' => 'Board Member'],
-          ['name' => 'Abugu Kasiemobi', 'role' => 'Board Member'],
-          ['name' => 'Tagbo Francis Obiozor', 'role' => 'Board Member'],
-          ['name' => 'Azuta Ifeoma Calista', 'role' => 'Board Member'],
-          ];
-          @endphp
-
-          @foreach ($board as $member)
-          <div class="swiper-slide">
-            <div class="th-team directors team-card3">
-              <div class="team-img">
-                <img src="{{ asset('assets/img/user/user-icon.jpg') }}"
-                  alt="{{ $member['name'] }}">
-              </div>
-              <div class="team-card-content">
-                <h3 class="box-title">{{ $member['name'] }}</h3>
-                <span class="team-desig">{{ $member['role'] }}</span>
-              </div>
-            </div>
-          </div>
+          @foreach($board as $member)
+          <div class="swiper-slide"><div class="th-team directors team-card3">
+            <div class="team-img"><img src="{{ $member->image ? Storage::url($member->image) : asset('assets/img/user/user-icon.jpg') }}" alt="{{ $member->name }}"></div>
+            <div class="team-card-content"><h3 class="box-title">{{ $member->name }}</h3><span class="team-desig">{{ $member->position }}</span></div>
+          </div></div>
           @endforeach
-
         </div>
       </div>
     </div>
+    @endif
+
+    @if($executives->isNotEmpty())
+    @php
+      $executiveCount = $executives->count();
+      $executiveVisible = min(4, $executiveCount);
+      $executiveRepeatCount = $executiveCount > 1 ? max(2, (int) ceil(8 / $executiveCount)) : 1;
+      $executiveSlides = collect();
+      for ($repeat = 0; $repeat < $executiveRepeatCount; $repeat++) {
+        foreach ($executives as $member) {
+          $executiveSlides->push(['member' => $member, 'duplicate' => $repeat > 0]);
+        }
+      }
+      $executiveSliderOptions = [
+        'loop' => $executiveCount > 1,
+        'loopAdditionalSlides' => $executiveSlides->count(),
+        'centeredSlides' => false,
+        'speed' => 850,
+        'autoplay' => ['delay' => 3500, 'disableOnInteraction' => false, 'pauseOnMouseEnter' => true],
+        'breakpoints' => [
+          0 => ['slidesPerView' => 1, 'spaceBetween' => 12],
+          576 => ['slidesPerView' => min(2, $executiveVisible), 'spaceBetween' => 16],
+          992 => ['slidesPerView' => min(3, $executiveVisible), 'spaceBetween' => 18],
+          1200 => ['slidesPerView' => $executiveVisible, 'spaceBetween' => 18],
+        ],
+      ];
+    @endphp
+    <div class="title-area text-center mb-40 mt-60">
+      <span class="sub-title">Daily Operations</span>
+      <h2 class="sec-title">Executive Team</h2>
+    </div>
+    <div class="slider-area directors about-team-slider executive-team-slider {{ $executiveCount === 1 ? 'is-single' : '' }}">
+      <div class="swiper th-slider has-shadow" id="executiveSlider" data-slider-options='@json($executiveSliderOptions)'>
+        <div class="swiper-wrapper">
+          @foreach($executiveSlides as $slide)
+          @php($member = $slide['member'])
+          <div class="swiper-slide" @if($slide['duplicate']) aria-hidden="true" @endif><div class="th-team directors team-card3">
+            <div class="team-img"><img src="{{ $member->image ? Storage::url($member->image) : asset('assets/img/user/user-icon.jpg') }}" alt="{{ $member->name }}"></div>
+            <div class="team-card-content"><h3 class="box-title">{{ $member->name }}</h3><span class="team-desig">{{ $member->position }}</span></div>
+          </div></div>
+          @endforeach
+        </div>
+      </div>
+    </div>
+    @endif
   </div>
 </section>
 

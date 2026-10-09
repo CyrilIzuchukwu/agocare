@@ -250,6 +250,231 @@ div#global-loader .whirly-loader div:nth-child(12) {
    ABOUT PAGE — CUSTOM STYLES
    ============================================= */
 
+/* Homepage founder message */
+.ago-founder-message {
+    position: relative;
+}
+
+.ago-founder-message__shell {
+    overflow: hidden;
+    border-radius: 32px;
+    background: #193b65;
+    box-shadow: 0 24px 60px rgba(19, 49, 84, 0.14);
+}
+
+.ago-founder-message__portrait {
+    position: relative;
+    height: 100%;
+    min-height: 560px;
+    background: #f5f6f8;
+}
+
+.ago-founder-message__portrait > img {
+    width: 100%;
+    height: 100%;
+    min-height: 560px;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.ago-founder-message__identity {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    left: 24px;
+    padding: 18px 22px;
+    border-left: 4px solid #d9232e;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 12px 30px rgba(15, 35, 60, 0.18);
+}
+
+.ago-founder-message__identity h3 {
+    margin: 0 0 4px;
+    color: #193b65;
+    font-size: 24px;
+}
+
+.ago-founder-message__identity p {
+    margin: 0;
+    color: #596675;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.ago-founder-message__content {
+    height: 100%;
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 64px 70px;
+    color: #fff;
+}
+
+.ago-founder-message__eyebrow {
+    width: fit-content;
+    margin-bottom: 18px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.ago-founder-message__content h2 {
+    margin-bottom: 24px;
+    color: #fff;
+    font-size: clamp(34px, 4vw, 52px);
+    line-height: 1.12;
+}
+
+.ago-founder-message__text {
+    max-width: 720px;
+    margin-bottom: 32px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 18px;
+    line-height: 1.75;
+}
+
+.ago-founder-message__button {
+    align-self: flex-start;
+    background: #d9232e;
+    color: #fff;
+}
+
+.ago-founder-message__button:hover {
+    background: #b91c26;
+    color: #fff;
+}
+
+.ago-founder-message__button:hover i,
+.ago-founder-message__button:active i,
+.ago-founder-message__button:focus i {
+    color: #fff;
+}
+
+/* Homepage team and volunteer cards */
+.team-area-1 .people-card {
+    width: min(100%, 340px);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.team-area-1 .people-card .img-wrap {
+    margin-right: 12px;
+    margin-left: 12px;
+}
+
+.team-area-1 .people-card .team-img {
+    border: 1px solid rgba(25, 59, 101, 0.14);
+    border-radius: 24px 24px 110px 110px;
+    background: #f7f9fc;
+}
+
+.team-area-1 .people-card .team-card-content {
+    margin-top: -70px;
+    padding: 94px 22px 24px;
+}
+
+.team-area-1 .people-card .team-card-content::after {
+    border-radius: 72px 72px 24px 24px;
+}
+
+.team-area-1 .people-card .box-title {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    line-height: 1.25;
+}
+
+.team-area-1 .people-card .team-desig {
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.team-area-1 .people-card .box-title,
+.team-area-1 .people-card .team-desig {
+    transition: color 0.3s ease;
+}
+
+.team-area-1 .people-card:hover .box-title,
+.team-area-1 .people-card:hover .box-title a,
+.team-area-1 .people-card:hover .team-desig {
+    color: #fff;
+}
+
+@media (max-width: 575px) {
+    .team-area-1 .people-card {
+        width: min(88vw, 320px);
+    }
+
+    .team-area-1 .people-card .team-card-content {
+        margin-top: -62px;
+        padding: 82px 18px 22px;
+    }
+
+    .team-area-1 .people-card .box-title {
+        min-height: 45px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 991px) {
+    .ago-founder-message__portrait,
+    .ago-founder-message__portrait > img {
+        min-height: 500px;
+    }
+
+    .ago-founder-message__content {
+        min-height: auto;
+        padding: 50px 40px;
+    }
+}
+
+@media (max-width: 575px) {
+    .ago-founder-message__shell {
+        border-radius: 20px;
+    }
+
+    .ago-founder-message__portrait,
+    .ago-founder-message__portrait > img {
+        min-height: 420px;
+    }
+
+    .ago-founder-message__identity {
+        right: 14px;
+        bottom: 14px;
+        left: 14px;
+        padding: 14px 16px;
+    }
+
+    .ago-founder-message__identity h3 {
+        font-size: 20px;
+    }
+
+    .ago-founder-message__content {
+        padding: 38px 24px 42px;
+    }
+
+    .ago-founder-message__content h2 {
+        font-size: 32px;
+    }
+
+    .ago-founder-message__text {
+        font-size: 16px;
+        line-height: 1.65;
+    }
+}
+
 .testi-box-img .testi-img {
     width: 100%;
 }
@@ -273,6 +498,272 @@ div#global-loader .whirly-loader div:nth-child(12) {
 
 .founder-highlight .testi-card .quote-icon {
     background: #fff;
+}
+
+/* Compact founder profile used above the About-page team listings */
+.ago-about-founder {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(300px, 39%) minmax(0, 1fr);
+    align-items: center;
+    max-width: 1160px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 28px;
+    border: 1px solid #e7ebf0;
+    border-radius: 34px;
+    background:
+        radial-gradient(circle at 100% 0, rgba(217, 35, 46, 0.08), transparent 34%),
+        #f7f9fc;
+    box-shadow: 0 24px 70px rgba(19, 49, 84, 0.1);
+}
+
+.ago-about-founder__photo {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    max-height: 520px;
+    border: 8px solid #fff;
+    border-radius: 26px;
+    background: #fff;
+    box-shadow: 0 18px 45px rgba(19, 49, 84, 0.16);
+}
+
+.ago-about-founder__photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.ago-about-founder__message {
+    position: relative;
+    z-index: 1;
+    margin-left: -22px;
+    padding: 46px 52px 42px 64px;
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 14px 40px rgba(19, 49, 84, 0.08);
+}
+
+.ago-about-founder__heading {
+    position: relative;
+    margin-bottom: 24px;
+    padding-left: 22px;
+}
+
+.ago-about-founder__heading::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 0;
+    width: 4px;
+    border-radius: 4px;
+    background: #d9232e;
+}
+
+.ago-about-founder__kicker {
+    display: inline-block;
+    margin-bottom: 9px;
+    color: #d9232e;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.ago-about-founder__heading h3 {
+    max-width: 570px;
+    margin: 0;
+    color: #193b65;
+    font-size: clamp(27px, 3vw, 39px);
+    line-height: 1.18;
+}
+
+.ago-about-founder__bio {
+    max-width: 760px;
+    margin: 0 0 28px;
+    color: #4d5b6c;
+    font-family: var(--body-font);
+    font-size: 17px;
+    line-height: 1.72;
+}
+
+.ago-about-founder__identity {
+    width: fit-content;
+    min-width: min(100%, 390px);
+    padding: 17px 23px;
+    border-radius: 14px;
+    background: #193b65;
+    box-shadow: 0 10px 24px rgba(19, 49, 84, 0.16);
+}
+
+.ago-about-founder__identity h4 {
+    margin: 0 0 5px;
+    color: #fff;
+    font-size: 21px;
+}
+
+.ago-about-founder__identity p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+@media (max-width: 991px) {
+    .ago-about-founder {
+        grid-template-columns: 1fr;
+        max-width: 680px;
+        padding: 22px;
+    }
+
+    .ago-about-founder__photo {
+        width: min(78%, 430px);
+        max-height: none;
+        margin: 0 auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .ago-about-founder__message {
+        z-index: 3;
+        margin: -24px 18px 0;
+        padding: 52px 36px 36px;
+        border-radius: 22px;
+    }
+}
+
+@media (max-width: 575px) {
+    .ago-about-founder__photo {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 20px;
+    }
+
+    .ago-about-founder {
+        padding: 12px;
+        border-radius: 22px;
+    }
+
+    .ago-about-founder__message {
+        margin: -16px 8px 8px;
+        padding: 42px 22px 24px;
+        border-radius: 20px;
+    }
+
+    .ago-about-founder__heading {
+        padding-left: 16px;
+    }
+
+    .ago-about-founder__heading h3 {
+        font-size: 26px;
+    }
+
+    .ago-about-founder__kicker {
+        font-size: 10px;
+        letter-spacing: 0.08em;
+    }
+
+    .ago-about-founder__bio {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .ago-about-founder__identity {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+/* About-page board and executive cards */
+.about-team-slider {
+    max-width: 1320px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.about-team-slider .swiper-slide {
+    height: auto;
+}
+
+.about-team-slider .team-card3 {
+    height: 100%;
+}
+
+.about-team-slider .team-card3 .team-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 22px;
+    background: #f3f5f7;
+}
+
+.about-team-slider .team-card3 .team-img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.about-team-slider.is-single .swiper-wrapper {
+    justify-content: center;
+}
+
+.about-team-slider.is-single .swiper-slide {
+    max-width: 300px;
+}
+
+.executive-team-slider {
+    width: 100%;
+    max-width: none;
+}
+
+.executive-team-slider .team-card3 {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.executive-team-slider .team-card3 .team-img {
+    aspect-ratio: 8 / 9;
+    min-height: 0;
+    border: 1px solid rgba(25, 59, 101, 0.12);
+}
+
+@media (max-width: 575px) {
+    .about-team-slider {
+        max-width: 390px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .about-team-slider .team-card3 .team-img {
+        aspect-ratio: 5 / 4;
+        margin-bottom: 16px;
+        border-radius: 18px;
+    }
+
+    .executive-team-slider {
+        max-width: 430px;
+    }
+
+    .executive-team-slider .team-card3 {
+        width: min(92vw, 390px);
+    }
+
+    .executive-team-slider .team-card3 .team-img {
+        aspect-ratio: 4 / 5;
+        min-height: min(112vw, 485px);
+    }
+
+    .about-team-slider .team-card3 .box-title {
+        font-size: 18px;
+    }
 }
 
 .directors.team-card3 .box-title {

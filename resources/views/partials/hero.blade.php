@@ -20,7 +20,7 @@
                                     </h1>
                                     <div class="btn-wrap justify-content-center" data-ani="slideinup"
                                         data-ani-delay="0.7s">
-                                        <a href="" class="th-btn style4 cta-btn">Contact Us <i
+                                        <a href="{{ route('contact') }}" class="th-btn style4 cta-btn">Contact Us <i
                                                 class="fas fa-arrow-up-right ms-2"></i></a>
                                         <a href="https://www.youtube.com/watch?v=_sI_Ps7JSEk"
                                             class="th-btn style5 popup-video cta-btn"><i class="fas fa-play me-2"></i>
@@ -51,7 +51,7 @@
                                     </h1>
                                     <div class="btn-wrap justify-content-center" data-ani="slideinup"
                                         data-ani-delay="0.7s">
-                                        <a href="" class="th-btn style4 cta-btn">Volunteer<i
+                                        <a href="{{ route('volunteer') }}" class="th-btn style4 cta-btn">Volunteer<i
                                                 class="fas fa-arrow-up-right ms-2"></i></a>
                                         <a href="https://www.youtube.com/watch?v=_sI_Ps7JSEk"
                                             class="th-btn style5 popup-video cta-btn"><i class="fas fa-play me-2"></i>
@@ -89,7 +89,7 @@
 
                                     <div class="btn-wrap justify-content-center" data-ani="slideinup"
                                         data-ani-delay="0.7s">
-                                        <a href="" class="th-btn style4 cta-btn">
+                                        <a href="{{ route('donate') }}" class="th-btn style4 cta-btn">
                                             Donate Now <i class="fas fa-arrow-up-right ms-2"></i>
                                         </a>
                                         <a href="https://www.youtube.com/watch?v=_sI_Ps7JSEk"

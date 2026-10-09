@@ -38,6 +38,13 @@
                 </a>
               </li>
 
+              <li class="mb-1 {{ request()->routeIs('admin.team.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.team.index') }}">
+                  <i class="ti ti-users-group fs-16 me-2"></i>
+                  <span>Team Members</span>
+                </a>
+              </li>
+
 
               <li class="mb-1 ">
                 <a href="" class="">

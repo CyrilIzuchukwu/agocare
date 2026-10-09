@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SeoSettingsController;
 use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\TeamMemberController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')
@@ -12,6 +13,10 @@ Route::prefix('admin')
   ->middleware('auth', 'can:access-admin-dashboard')
   ->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+    Route::resource('team', TeamMemberController::class)
+      ->except('show')
+      ->parameters(['team' => 'teamMember']);
 
 
     Route::prefix('profile')

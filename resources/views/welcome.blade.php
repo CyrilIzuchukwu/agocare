@@ -108,7 +108,7 @@
                             </div>
                         </div>
                         <div class="btn-wrap mt-40">
-                            <a href="about.html" class="th-btn">About More<i class="fas fa-arrow-up-right ms-2"></i></a>
+                            <a href="{{ route('about') }}" class="th-btn">About More<i class="fas fa-arrow-up-right ms-2"></i></a>
                         </div>
                     </div>
                 </div> --}}
@@ -162,7 +162,7 @@
                     </div>
 
                     <div class="btn-wrap mt-40">
-                        <a href="about.html" class="th-btn">
+                        <a href="{{ route('about') }}" class="th-btn">
                             Learn More About Us
                             <i class="fas fa-arrow-up-right ms-2"></i>
                         </a>
@@ -173,6 +173,39 @@
         </div>
     </div>
 </div>
+
+<!-- Founder Message -->
+@if($leadership)
+<section class="ago-founder-message space-bottom" aria-labelledby="founder-message-title">
+    <div class="container">
+        <div class="ago-founder-message__shell">
+            <div class="row g-0 align-items-stretch">
+                <div class="col-lg-5">
+                    <div class="ago-founder-message__portrait">
+                        <img src="{{ $leadership->image ? Storage::url($leadership->image) : asset('assets/img/user/user-icon.jpg') }}" alt="{{ $leadership->name }}">
+                        <div class="ago-founder-message__identity">
+                            <h3>{{ $leadership->name }}</h3>
+                            <p>{{ $leadership->position }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="ago-founder-message__content">
+                        <span class="ago-founder-message__eyebrow">From the heart of AGO Cares</span>
+                        <h2 id="founder-message-title">A Message from Our Founder</h2>
+                        @if($leadership->bio)
+                        <p class="ago-founder-message__text">{{ $leadership->bio }}</p>
+                        @endif
+                        <a href="{{ route('about') }}#our-team" class="th-btn ago-founder-message__button">
+                            Meet Our Team <i class="fas fa-arrow-up-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
 
 <!-- Cta Area -->
 <div class="cta-area-1">
@@ -193,7 +226,7 @@
                     outreach, care, and community advocacy.
                 </p>
 
-                <a href="contact.html" class="th-btn style5">
+                <a href="{{ route('volunteer') }}" class="th-btn style5">
                     Volunteer With Us <i class="fas fa-arrow-up-right ms-2"></i>
                 </a>
             </div>
@@ -212,7 +245,7 @@
                     long-term impact and lasting change.
                 </p>
 
-                <a href="donate.html" class="th-btn style5">
+                <a href="{{ route('donate') }}" class="th-btn style5">
                     Support Now <i class="fas fa-arrow-up-right ms-2"></i>
                 </a>
             </div>
@@ -248,12 +281,12 @@
                             </div>
                             <div class="box-content">
                                 <h3 class="box-title">
-                                    <a href="">Helping Vulnerable Children
+                                    <a href="{{ route('donate') }}">Helping Vulnerable Children
                                     </a>
                                 </h3>
                                 <p>Providing care, education, and basic needs for vulnerable children.</p>
 
-                                <a href="" class="th-btn">Donate
+                                <a href="{{ route('donate') }}" class="th-btn">Donate
                                     <i class="fas fa-arrow-up-right ms-2"></i>
                                 </a>
                             </div>
@@ -268,11 +301,11 @@
                                 <img src="{{ asset('assets/img/target/target4.jpg') }}" alt="image">
                             </div>
                             <div class="box-content">
-                                <h3 class="box-title"><a href="">Supporting the Visually Impaired</a></h3>
+                                <h3 class="box-title"><a href="{{ route('donate') }}">Supporting the Visually Impaired</a></h3>
                                 <p>Providing skills, education, and support for the visually impaired.</p>
 
 
-                                <a href="" class="th-btn">Donate <i
+                                <a href="{{ route('donate') }}" class="th-btn">Donate <i
                                         class="fas fa-arrow-up-right ms-2"></i></a>
                             </div>
                         </div>
@@ -287,14 +320,14 @@
                             </div>
                             <div class="box-content">
                                 <h3 class="box-title">
-                                    <a href="">
+                                    <a href="{{ route('donate') }}">
                                         Physical and Mental Disabilities
                                     </a>
 
                                 </h3>
                                 <p>Providing skills, care, and support for physical and mental disabilities.</p>
 
-                                <a href="" class="th-btn">Donate Now <i
+                                <a href="{{ route('donate') }}" class="th-btn">Donate Now <i
                                         class="fas fa-arrow-up-right ms-2"></i></a>
                             </div>
                         </div>
@@ -310,13 +343,13 @@
                             </div>
                             <div class="box-content">
                                 <h3 class="box-title">
-                                    <a href="">
+                                    <a href="{{ route('donate') }}">
                                         People Living with Albinism
                                     </a>
                                 </h3>
                                 <p>Providing healthcare items, protection, and support for people with albinism.</p>
 
-                                <a href="" class="th-btn">Donate Now <i
+                                <a href="{{ route('donate') }}" class="th-btn">Donate Now <i
                                         class="fas fa-arrow-up-right ms-2"></i></a>
                             </div>
                         </div>
@@ -372,7 +405,7 @@
                             to visually impaired students excelling academically, and persons with disabilities
                             building livelihoods - every story is proof that your support transforms lives.</p>
                         <div class="btn-wrap mt-35">
-                            <a href="about.html" class="th-btn style-border">Read Our Stories <i
+                            <a href="{{ route('about') }}" class="th-btn style-border">Read Our Stories <i
                                     class="fas fa-arrow-up-right ms-2"></i></a>
                         </div>
                     </div>
@@ -383,105 +416,52 @@
     </div>
 </div>
 
-<!--Team Area -->
+<!-- Featured Team Area -->
+@if($homepageTeam->isNotEmpty())
 <section class="space-bottom team-area-1">
-    <div class="shape-mockup team-bg-shape1-1 spin d-xxl-block d-none" data-top="0%" data-right="3%"><img
-            src="assets/img/shape/hand-group-shape1.png" alt="img"></div>
+    <div class="shape-mockup team-bg-shape1-1 spin d-xxl-block d-none" data-top="0%" data-right="3%"><img src="{{ asset('assets/img/shape/hand-group-shape1.png') }}" alt=""></div>
     <div class="container">
         <div class="title-area text-center">
-            <span class="sub-title">Our Volunteer</span>
-            <h2 class="sec-title">Meet The Optimistic Volunteer</h2>
+            <span class="sub-title">The People Behind AGO</span>
+            <h2 class="sec-title">Meet Our Team</h2>
         </div>
-        <div class="slider-area">
-            <div class="swiper th-slider has-shadow team-slider1" id="teamSlider1"
-                data-slider-options='{"loop": true, "breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"2"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"3"},"1200":{"slidesPerView":"4"}}}'>
-                <div class="swiper-wrapper">
-                    <!-- Single Item -->
-                    <div class="swiper-slide">
-                        <div class="th-team team-card">
-                            <div class="img-wrap">
-                                <div class="team-img">
-                                    <img src="{{ asset('assets/img/user/user-icon.jpg') }}" alt="Team">
-                                </div>
-                            </div>
-                            <div class="team-card-content">
-                                <h3 class="box-title"><a href="team-details.html">Michel Connor</a></h3>
-                                <span class="team-desig">Volunteer</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Item -->
-                    <div class="swiper-slide">
-                        <div class="th-team team-card">
-                            <div class="img-wrap">
-                                <div class="team-img">
-                                    <img src="assets/img/user/user-icon.jpg" alt="Team">
-                                </div>
-                            </div>
-                            <div class="team-card-content">
-                                <h3 class="box-title"><a href="team-details.html">Joseph Alexander</a></h3>
-                                <span class="team-desig">Volunteer</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Item -->
-                    <div class="swiper-slide">
-                        <div class="th-team team-card">
-                            <div class="img-wrap">
-                                <div class="team-img">
-                                    <img src="assets/img/user/user-icon.jpg" alt="Team">
-                                </div>
-                            </div>
-                            <div class="team-card-content">
-                                <h3 class="box-title"><a href="javascript:void(0)">Jessica Lauren</a></h3>
-                                <span class="team-desig">Volunteer</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Item -->
-                    <div class="swiper-slide">
-                        <div class="th-team team-card">
-                            <div class="img-wrap">
-                                <div class="team-img">
-                                    <img src="assets/img/user/user-icon.jpg" alt="Team">
-                                </div>
-                            </div>
-                            <div class="team-card-content">
-                                <h3 class="box-title"><a href="team-details.html">Daniel Thomas</a></h3>
-                                <span class="team-desig">Volunteer</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Item -->
-                    <div class="swiper-slide">
-                        <div class="th-team team-card">
-                            <div class="img-wrap">
-                                <div class="team-img">
-                                    <img src="assets/img/user/user-icon.jpg" alt="Team">
-                                </div>
-
-                            </div>
-                            <div class="team-card-content">
-                                <h3 class="box-title"><a href="team-details.html">Daniel Thomas</a></h3>
-                                <span class="team-desig">Volunteer</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
+        <div class="slider-area"><div class="swiper th-slider has-shadow team-slider1" id="leadershipSlider" data-slider-options='{"loop":true,"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"2"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"3"},"1200":{"slidesPerView":"4"}}}'>
+            <div class="swiper-wrapper">
+                @foreach($homepageTeam as $member)
+                <div class="swiper-slide"><div class="th-team team-card people-card">
+                    <div class="img-wrap"><div class="team-img"><img src="{{ $member->image ? Storage::url($member->image) : asset('assets/img/user/user-icon.jpg') }}" alt="{{ $member->name }}"></div></div>
+                    <div class="team-card-content"><h3 class="box-title">{{ $member->name }}</h3><span class="team-desig">{{ $member->position }}</span></div>
+                </div></div>
+                @endforeach
             </div>
-            <button data-slider-prev="#teamSlider1" class="slider-arrow slider-prev"><i
-                    class="far fa-arrow-left"></i></button>
-            <button data-slider-next="#teamSlider1" class="slider-arrow slider-next"><i
-                    class="far fa-arrow-right"></i></button>
-        </div>
+        </div></div>
     </div>
 </section>
+@endif
+
+<!-- Volunteers Area -->
+@if($volunteers->isNotEmpty())
+<section class="space-bottom team-area-1 volunteer-team-area">
+    <div class="container">
+        <div class="title-area text-center"><span class="sub-title">Our Volunteers</span><h2 class="sec-title">Meet Our Dedicated Volunteers</h2></div>
+        <div class="slider-area">
+            <div class="swiper th-slider has-shadow team-slider1" id="teamSlider1" data-slider-options='{"loop":true,"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"2"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"3"},"1200":{"slidesPerView":"4"}}}'>
+                <div class="swiper-wrapper">
+                    @foreach($volunteers as $member)
+                    <div class="swiper-slide"><div class="th-team team-card people-card">
+                        <div class="img-wrap"><div class="team-img"><img src="{{ $member->image ? Storage::url($member->image) : asset('assets/img/user/user-icon.jpg') }}" alt="{{ $member->name }}"></div></div>
+                        <div class="team-card-content"><h3 class="box-title">{{ $member->name }}</h3><span class="team-desig">{{ $member->position }}</span></div>
+                    </div></div>
+                    @endforeach
+                </div>
+            </div>
+            <button data-slider-prev="#teamSlider1" class="slider-arrow slider-prev"><i class="far fa-arrow-left"></i></button>
+            <button data-slider-next="#teamSlider1" class="slider-arrow slider-next"><i class="far fa-arrow-right"></i></button>
+        </div>
+        <div class="text-center mt-40"><a href="{{ route('volunteer') }}" class="th-btn">Become a Volunteer <i class="fas fa-arrow-up-right ms-2"></i></a></div>
+    </div>
+</section>
+@endif
 
 <!-- Video Area -->
 <div class="video-area-1 space bg-theme overflow-hidden">
@@ -694,7 +674,7 @@
                     <div class="swiper-slide">
                         <div class="blog-card">
                             <div class="blog-img">
-                                <a href="blog-details.html">
+                                <a href="{{ route('blog') }}">
                                     <div class="blog-img-shape1"
                                         data-mask-src="assets/img/blog/blog-card-bg-shape1-2.png"></div>
                                     <img src="assets/img/blog/blog_1_1.jpg" alt="blog image">
@@ -704,12 +684,12 @@
                                 <div class="blog-card-shape"
                                     data-mask-src="assets/img/blog/blog-card-bg-shape1-1.png"></div>
                                 <div class="blog-meta">
-                                    <a href="blog.html"><i class="fas fa-calendar"></i>January 10, 2025</a>
-                                    <a href="blog.html"><i class="fas fa-tags"></i>Albinism Awareness</a>
+                                    <a href="{{ route('blog') }}"><i class="fas fa-calendar"></i>January 10, 2025</a>
+                                    <a href="{{ route('blog') }}"><i class="fas fa-tags"></i>Albinism Awareness</a>
                                 </div>
-                                <h3 class="box-title"><a href="blog-details.html">Breaking the Stigma:
+                                <h3 class="box-title"><a href="{{ route('blog') }}">Breaking the Stigma:
                                         Understanding Albinism in Nigeria</a></h3>
-                                <a href="blog-details.html" class="th-btn">Read More <i
+                                <a href="{{ route('blog') }}" class="th-btn">Read More <i
                                         class="fas fa-arrow-up-right ms-2"></i></a>
                             </div>
                         </div>
@@ -718,7 +698,7 @@
                     <div class="swiper-slide">
                         <div class="blog-card">
                             <div class="blog-img">
-                                <a href="blog-details.html">
+                                <a href="{{ route('blog') }}">
                                     <div class="blog-img-shape1"
                                         data-mask-src="assets/img/blog/blog-card-bg-shape1-2.png"></div>
                                     <img src="assets/img/blog/blog_1_2.jpg" alt="blog image">
@@ -728,12 +708,12 @@
                                 <div class="blog-card-shape"
                                     data-mask-src="assets/img/blog/blog-card-bg-shape1-1.png"></div>
                                 <div class="blog-meta">
-                                    <a href="blog.html"><i class="fas fa-calendar"></i>February 28, 2025</a>
-                                    <a href="blog.html"><i class="fas fa-tags"></i>Disability Rights</a>
+                                    <a href="{{ route('blog') }}"><i class="fas fa-calendar"></i>February 28, 2025</a>
+                                    <a href="{{ route('blog') }}"><i class="fas fa-tags"></i>Disability Rights</a>
                                 </div>
-                                <h3 class="box-title"><a href="blog-details.html">Empowering Persons with
+                                <h3 class="box-title"><a href="{{ route('blog') }}">Empowering Persons with
                                         Disabilities Through Skills Acquisition</a></h3>
-                                <a href="blog-details.html" class="th-btn">Read More <i
+                                <a href="{{ route('blog') }}" class="th-btn">Read More <i
                                         class="fas fa-arrow-up-right ms-2"></i></a>
                             </div>
                         </div>
@@ -742,7 +722,7 @@
                     <div class="swiper-slide">
                         <div class="blog-card">
                             <div class="blog-img">
-                                <a href="blog-details.html">
+                                <a href="{{ route('blog') }}">
                                     <div class="blog-img-shape1"
                                         data-mask-src="assets/img/blog/blog-card-bg-shape1-2.png"></div>
                                     <img src="assets/img/blog/blog_1_3.jpg" alt="blog image">
@@ -752,12 +732,12 @@
                                 <div class="blog-card-shape"
                                     data-mask-src="assets/img/blog/blog-card-bg-shape1-1.png"></div>
                                 <div class="blog-meta">
-                                    <a href="blog.html"><i class="fas fa-calendar"></i>March 24, 2025</a>
-                                    <a href="blog.html"><i class="fas fa-tags"></i>Community Outreach</a>
+                                    <a href="{{ route('blog') }}"><i class="fas fa-calendar"></i>March 24, 2025</a>
+                                    <a href="{{ route('blog') }}"><i class="fas fa-tags"></i>Community Outreach</a>
                                 </div>
-                                <h3 class="box-title"><a href="blog-details.html">AGO Care's Community Visit:
+                                <h3 class="box-title"><a href="{{ route('blog') }}">AGO Care's Community Visit:
                                         Bringing Hope to the Vulnerable</a></h3>
-                                <a href="blog-details.html" class="th-btn">Read More <i
+                                <a href="{{ route('blog') }}" class="th-btn">Read More <i
                                         class="fas fa-arrow-up-right ms-2"></i></a>
                             </div>
                         </div>
@@ -766,7 +746,7 @@
                     <div class="swiper-slide">
                         <div class="blog-card">
                             <div class="blog-img">
-                                <a href="blog-details.html">
+                                <a href="{{ route('blog') }}">
                                     <div class="blog-img-shape1"
                                         data-mask-src="assets/img/blog/blog-card-bg-shape1-2.png"></div>
                                     <img src="assets/img/blog/blog_1_1.jpg" alt="blog image">
@@ -776,12 +756,12 @@
                                 <div class="blog-card-shape"
                                     data-mask-src="assets/img/blog/blog-card-bg-shape1-1.png"></div>
                                 <div class="blog-meta">
-                                    <a href="blog.html"><i class="fas fa-calendar"></i>April 15, 2025</a>
-                                    <a href="blog.html"><i class="fas fa-tags"></i>Healthcare</a>
+                                    <a href="{{ route('blog') }}"><i class="fas fa-calendar"></i>April 15, 2025</a>
+                                    <a href="{{ route('blog') }}"><i class="fas fa-tags"></i>Healthcare</a>
                                 </div>
-                                <h3 class="box-title"><a href="blog-details.html">Sun Protection and
+                                <h3 class="box-title"><a href="{{ route('blog') }}">Sun Protection and
                                         Skin Health: A Guide for People Living with Albinism</a></h3>
-                                <a href="blog-details.html" class="th-btn">Read More <i
+                                <a href="{{ route('blog') }}" class="th-btn">Read More <i
                                         class="fas fa-arrow-up-right ms-2"></i></a>
                             </div>
                         </div>
@@ -790,7 +770,7 @@
                     <div class="swiper-slide">
                         <div class="blog-card">
                             <div class="blog-img">
-                                <a href="blog-details.html">
+                                <a href="{{ route('blog') }}">
                                     <div class="blog-img-shape1"
                                         data-mask-src="assets/img/blog/blog-card-bg-shape1-2.png"></div>
                                     <img src="assets/img/blog/blog_1_2.jpg" alt="blog image">
@@ -800,12 +780,12 @@
                                 <div class="blog-card-shape"
                                     data-mask-src="assets/img/blog/blog-card-bg-shape1-1.png"></div>
                                 <div class="blog-meta">
-                                    <a href="blog.html"><i class="fas fa-calendar"></i>May 20, 2025</a>
-                                    <a href="blog.html"><i class="fas fa-tags"></i>Inclusion</a>
+                                    <a href="{{ route('blog') }}"><i class="fas fa-calendar"></i>May 20, 2025</a>
+                                    <a href="{{ route('blog') }}"><i class="fas fa-tags"></i>Inclusion</a>
                                 </div>
-                                <h3 class="box-title"><a href="blog-details.html">Building an Inclusive
+                                <h3 class="box-title"><a href="{{ route('blog') }}">Building an Inclusive
                                         Nigeria: How You Can Make a Difference</a></h3>
-                                <a href="blog-details.html" class="th-btn">Read More <i
+                                <a href="{{ route('blog') }}" class="th-btn">Read More <i
                                         class="fas fa-arrow-up-right ms-2"></i></a>
                             </div>
                         </div>
@@ -814,7 +794,7 @@
                     <div class="swiper-slide">
                         <div class="blog-card">
                             <div class="blog-img">
-                                <a href="blog-details.html">
+                                <a href="{{ route('blog') }}">
                                     <div class="blog-img-shape1"
                                         data-mask-src="assets/img/blog/blog-card-bg-shape1-2.png"></div>
                                     <img src="assets/img/blog/blog_1_3.jpg" alt="blog image">
@@ -824,12 +804,12 @@
                                 <div class="blog-card-shape"
                                     data-mask-src="assets/img/blog/blog-card-bg-shape1-1.png"></div>
                                 <div class="blog-meta">
-                                    <a href="blog.html"><i class="fas fa-calendar"></i>June 30, 2025</a>
-                                    <a href="blog.html"><i class="fas fa-tags"></i>Orphan Support</a>
+                                    <a href="{{ route('blog') }}"><i class="fas fa-calendar"></i>June 30, 2025</a>
+                                    <a href="{{ route('blog') }}"><i class="fas fa-tags"></i>Orphan Support</a>
                                 </div>
-                                <h3 class="box-title"><a href="blog-details.html">From Orphanage to
+                                <h3 class="box-title"><a href="{{ route('blog') }}">From Orphanage to
                                         Opportunity: Supporting Children Without Families</a></h3>
-                                <a href="blog-details.html" class="th-btn">Read More <i
+                                <a href="{{ route('blog') }}" class="th-btn">Read More <i
                                         class="fas fa-arrow-up-right ms-2"></i></a>
                             </div>
                         </div>
