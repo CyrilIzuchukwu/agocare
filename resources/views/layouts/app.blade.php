@@ -171,7 +171,7 @@
   <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-  <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}?v={{ filemtime(public_path('assets/css/custom.css')) }}">
   <link rel="stylesheet" href="{{ asset('assets/css/mobile.css') }}">
   <link rel="stylesheet" href="{{ asset('dashboard_assets/css/iziToast.min.css') }}">
 </head>
